@@ -1,3 +1,38 @@
 <%- include("partials/header.ejs") %>
-
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <% searchedBook.forEach(book => { %>
+            <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-L.jpg" class="" alt="<%= searchedBook.title %>">
+        </div>
+        <div class="col-1">
+        </div>
+          <div class="col-6 mt-5 pt-3">
+            
+                        <div class="">
+                            <h5 class="white">Title: <%= book.title %></h5>
+                            <p class="white">First Published: <%= book.first_publish_year %></p>
+                            <p class="white">Author: <%= book.authors_name %></p>
+                            
+                            <p class="white">Numbers of Pages: <%=book.pages %></p>
+                            <p class="white">Published at: <% book.publish_Place.slice(0, 5).forEach((place, index) => { %>
+                                <%= place %><%= index < 4 && index < book.publish_Place.length - 1 ? ', ' : '' %>
+                              <% }) %>
+                              <% if (book.publish_Place.length > 5) { %>
+                                ...
+                              <% } %></p>
+                            <p class="white">Rating: <%=book.averageRating %></p>
+                            <p class="white">Language: <% book.language.slice(0, 10).forEach((place, index) => { %>
+                                <%= place %><%= index < 4 && index < book.language.length - 1 ? ', ' : '' %>
+                              <% }) %>
+                              <% if (book.language.length > 5) { %>
+                                ...
+                              <% } %></p>
+                        </div>          
+            <% }) %>
+          </div>
+        </div>
+      </div>
+</body>
 <%- include("partials/footer.ejs") %>

@@ -26,13 +26,26 @@ app.get('/search', async (req, res) => {
 
     try {
       const response = await axios.get(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`);
-      
-    //   console.log(JSON.stringify(response.data.docs[0].author_name));
     //   console.log(JSON.stringify(response.data.docs[0].first_publish_year));
     //   console.log(JSON.stringify(response.data.docs[0].title));
     //   console.log(JSON.stringify(response.data.docs[0].ratings_average));
-  
-      res.send("Check console for search results");
+      const searchedBook = response.data.docs.slice(0,1).map(book => ({
+        cover_id: book.cover_i,
+        title: book.title,
+        authors_name: book.author_name || "Unknown Author",
+        averageRating: book.ratings_average,
+        rating_one: book.ratings_count_1,
+        rating_two: book.ratings_count_2,
+        rating_three: book.ratings_count_3,
+        rating_four: book.ratings_count_4,
+        rating_five: book.ratings_count_5,
+        publish_Place: book.publish_place,
+        pages: book.number_of_pages_median,
+        language: book.language,
+        first_publish_year: book.first_publish_year,
+      }))
+      // console.log(searchedBook);
+      res.render("searched.ejs", {searchedBook});
     } catch (error) {
       console.error("Error fetching data:", error);
       res.status(500).send("An error occurred while fetching data.");
@@ -41,33 +54,9 @@ app.get('/search', async (req, res) => {
 
 
 app.get('/', async (req, res) => {
-    // let bookData = "";
-    // const generURL = `https://openlibrary.org/subjects/fiction.json?limit=4&ebooks=true`;
-    // try {
-    //     let response = await axios.get(`${generURL}`);
-    //     bookData = {
-    //     cover_id : JSON.stringify(response.data.works[0].cover_id),
-    //     title: JSON.stringify(response.data.works[0].title),
-    //     first_publish_year: JSON.stringify(response.data.works[0].first_publish_year),
-    //     authors_name: JSON.stringify(response.data.works[0].authors[0].name),
-    // }
-    //   } catch (error) {
-    //     console.error("Error fetching data:", error);
-    //     res.status(500).send("An error occurred while fetching data.");
-    //   }
-    //   console.log(bookData);
-    // const coverURL = `https://covers.openlibrary.org/b/id/${bookData.cover_id}-M.jpg`;
-    
-    // res.render("index", { 
-    //     coverURL: coverURL,
-    //     title: bookData.title,
-    //     first_publish_year: bookData.first_publish_year,
-    //     authors_name: bookData.authors_name
-    // });
     try {
         const fictionGenre = `https://openlibrary.org/subjects/fiction.json?limit=4&ebooks=true`;
         const fictionResponse = await axios.get(fictionGenre);
-        // Map the first four books into a new array with relevant details
         const fictionBooks = fictionResponse.data.works.slice(0, 4).map(book => ({
           cover_id: book.cover_id,
           title: book.title,
@@ -75,7 +64,6 @@ app.get('/', async (req, res) => {
           authors_name: book.authors[0]?.name || "Unknown Author"
           
         }));
-        // console.log(JSON.stringify(response.data.works[0].cover_id));
         
         const psychologyGenre = `https://openlibrary.org/subjects/psychology.json?limit=4&ebooks=true`;
         const psychologyResponse = await axios.get(psychologyGenre);
