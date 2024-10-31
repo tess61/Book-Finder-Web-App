@@ -80,12 +80,21 @@
                     <% fictionBooks.forEach(book => { %>
                         <div class="col-md-3 mb-4">
                             <div class="card">
-                                <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
-                                <div class="card-body">
-                                    <h5 class="card-title white"><%= book.title %></h5>
-                                    <p class="card-text white">Published: <%= book.first_publish_year %></p>
-                                    <p class="card-text white">Author: <%= book.authors_name %></p>
-                                </div>
+                                <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
+                                  <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
+                                </a>
+                                  <div class="card-body">
+                                    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                      <h5 class="card-title white"><%= book.title %></h5>
+                                    </a>
+                                    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                      <p class="card-text white">Published: <%= book.first_publish_year %></p>
+                                      </a>
+                                      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                        <p class="card-text white">Author: <%= book.authors_name %></p>
+                                    </a>
+                                  </div>
+                                
                             </div>
                         </div>
                     <% }) %>
@@ -98,15 +107,24 @@
                 <div class="row ">
                   <% psychologyBooks.forEach(book => { %>
                     <div class="col-md-3 mb-4">
-                        <div class="card">
+                      <div class="card">
+                          <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
                             <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
+                          </a>
                             <div class="card-body">
+                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <h5 class="card-title white"><%= book.title %></h5>
+                              </a>
+                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <p class="card-text white">Published: <%= book.first_publish_year %></p>
-                                <p class="card-text white">Author: <%= book.authors_name %></p>
+                                </a>
+                                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                  <p class="card-text white">Author: <%= book.authors_name %></p>
+                              </a>
                             </div>
-                        </div>
-                    </div>
+                          
+                      </div>
+                  </div>
                 <% }) %>
                     </div>
                   </div>
@@ -117,34 +135,52 @@
                 <div class="row ">
                   <% religiousBooks.forEach(book => { %>
                     <div class="col-md-3 mb-4">
-                        <div class="card">
+                      <div class="card">
+                          <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
                             <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
+                          </a>
                             <div class="card-body">
+                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <h5 class="card-title white"><%= book.title %></h5>
+                              </a>
+                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <p class="card-text white">Published: <%= book.first_publish_year %></p>
-                                <p class="card-text white">Author: <%= book.authors_name %></p>
+                                </a>
+                                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                  <p class="card-text white">Author: <%= book.authors_name %></p>
+                              </a>
                             </div>
-                        </div>
-                    </div>
+                          
+                      </div>
+                  </div>
                 <% }) %>
                   </div>
               </div>
               
               <hr class="white">
               <div class="" id="Self-Help">
-                <h3 class="white">History</h3>
+                <h3 class="white">Non-Fiction</h3>
                 <div class="row ">
                   <% historyBooks.forEach(book => { %>
                     <div class="col-md-3 mb-4">
-                        <div class="card">
+                      <div class="card">
+                          <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
                             <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
+                          </a>
                             <div class="card-body">
+                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <h5 class="card-title white"><%= book.title %></h5>
+                              </a>
+                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <p class="card-text white">Published: <%= book.first_publish_year %></p>
-                                <p class="card-text white white">Author: <%= book.authors_name %></p>
+                                </a>
+                                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                  <p class="card-text white">Author: <%= book.authors_name %></p>
+                              </a>
                             </div>
-                        </div>
-                    </div>
+                          
+                      </div>
+                  </div>
                 <% }) %>
                   </div>
               </div>
