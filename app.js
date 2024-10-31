@@ -65,10 +65,10 @@ app.get('/', async (req, res) => {
     //     authors_name: bookData.authors_name
     // });
     try {
-        const psychologyGenre = `https://openlibrary.org/subjects/fiction.json?limit=4&ebooks=true`;
-        const response = await axios.get(psychologyGenre);
+        const fictionGenre = `https://openlibrary.org/subjects/fiction.json?limit=4&ebooks=true`;
+        const fictionResponse = await axios.get(fictionGenre);
         // Map the first four books into a new array with relevant details
-        const books = response.data.works.slice(0, 4).map(book => ({
+        const fictionBooks = fictionResponse.data.works.slice(0, 4).map(book => ({
           cover_id: book.cover_id,
           title: book.title,
           first_publish_year: book.first_publish_year,
@@ -76,8 +76,40 @@ app.get('/', async (req, res) => {
           
         }));
         // console.log(JSON.stringify(response.data.works[0].cover_id));
-        // Send the array to the `index.ejs` view
-        res.render("index", { books });
+        
+        const psychologyGenre = `https://openlibrary.org/subjects/psychology.json?limit=4&ebooks=true`;
+        const psychologyResponse = await axios.get(psychologyGenre);
+        const psychologyBooks = psychologyResponse.data.works.slice(0, 4).map(book => ({
+          cover_id: book.cover_id,
+          title: book.title,
+          first_publish_year: book.first_publish_year,
+          authors_name: book.authors[0]?.name || "Unknown Author"
+          
+        }));
+        const historyGenre = `https://openlibrary.org/subjects/history.json?limit=4&ebooks=true`;
+        const historyResponse = await axios.get(historyGenre);
+        const historyBooks = historyResponse.data.works.slice(0, 4).map(book => ({
+          cover_id: book.cover_id,
+          title: book.title,
+          first_publish_year: book.first_publish_year,
+          authors_name: book.authors[0]?.name || "Unknown Author"
+          
+        }));
+        const religiousGenre = `https://openlibrary.org/subjects/religious.json?limit=4&ebooks=true`;
+        const religiousResponse = await axios.get(religiousGenre);
+        const religiousBooks = religiousResponse.data.works.slice(0, 4).map(book => ({
+          cover_id: book.cover_id,
+          title: book.title,
+          first_publish_year: book.first_publish_year,
+          authors_name: book.authors[0]?.name || "Unknown Author"
+          
+        }));
+        res.render("index", { 
+          fictionBooks,
+          psychologyBooks,
+          religiousBooks,
+          historyBooks
+        });
       } catch (error) {
         console.error("Error fetching data:", error);
         res.status(500).send("An error occurred while fetching data.");
