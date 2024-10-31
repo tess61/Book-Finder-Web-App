@@ -1,0 +1,360 @@
+<%- include("partials/header.ejs") %>
+<body>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+              <!-- Sidebar - visible as dropdown on smaller screens -->
+              <div class="col-12 col-md-auto">
+                <!-- Toggle Button for Small Screens -->
+                <button class="btn btn-dark d-md-none mb-3 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-expanded="false" aria-controls="sidebarMenu">
+                  Menu
+                </button>
+                
+                <!-- Collapsible Sidebar Content -->
+                <div class="collapse d-md-block" id="sidebarMenu">
+                  <div class="d-flex flex-column flex-shrink-0 p-5 text-white bg-dark w-100 mt-5">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                      <span class="fs-4">Geners</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                      <a href="#Fiction" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                        Fiction
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#Non-Fiction" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Psychology
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#Novel" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        Novel
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#Self-Help" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        Self-Help
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#Narative" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Narative
+                      </a>
+                    </li>
+                  </ul>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- Main Content -->
+              <div class="col">
+                <div class="">
+                  <div class="col-xxl-11 px-4 py-2">
+                    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                      <div class="col-10 col-sm-8 col-lg-6">
+                        <img src="/images/blog-2.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                      </div>
+                      <div class="col-lg-6">
+                        <h1 class="display-5 fw-bold  lh-1 mb-3 white">Get Your New Book Collections</h1>
+                        <p class="lead white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam et illo pariatur amet, fugit distinctio beatae dolore expedita facere rerum quas, sit eligendi! Ipsum earum doloribus adipisci iusto maiores eum!</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 white">Explore more </button>
+                          <button type="button" class="btn btn-outline-secondary btn-lg px-4 white">Default</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        <div class="container">
+            <hr class="white">
+            <div class="" id="Fiction">
+                <h3 class="white">Fiction</h3>
+                <div class="row ">
+                    <!-- <div class=" text-center">
+                        <div class="row align-items-start">
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="<%# coverURL %>" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h4 class="card-title white"><%#title%></h4>
+                                <h5 class="white"><%# authors_name %></h5>
+                                <h5 class="white"> <%# first_publish_year %></h5>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body ">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>   -->
+                    <% books.forEach(book => { %>
+                        <div class="col-md-3 mb-4">
+                            <div class="card">
+                                <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= book.title %></h5>
+                                    <p class="card-text">Published: <%= book.first_publish_year %></p>
+                                    <p class="card-text">Author: <%= book.authors_name %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                  </div>
+            </div>
+            
+              <hr class="white">
+              <div class="" id="Non-Fiction">
+                <h3 class="white">Psychology</h3>
+                <div class="row ">
+                    <div class=" text-center">
+                        <div class="row align-items-start">
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="<%# coverURL %>" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body ">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              
+              <hr class="white">
+              <div class="" id="Novel">
+                <h3 class="white">Novel</h3>
+                <div class="row ">
+                    <div class=" text-center">
+                        <div class="row align-items-start">
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="<%# coverURL %>" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body ">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+              
+              <hr class="white">
+              <div class="" id="Self-Help">
+                <h3 class="white">Self-Help</h3>
+                <div class="row ">
+                    <div class=" text-center">
+                        <div class="row align-items-start">
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="<%# coverURL %>" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body ">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+              
+              <hr class="white">
+              <div class="" id="Narative">
+                <h3 class="white">Narative</h3>
+                <div class="row ">
+                    <div class=" text-center">
+                        <div class="row align-items-start">
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="<%# coverURL %>" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body ">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                              <img src="/images/book-1.png" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title white">Card title</h5>
+                                <p class="card-text white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary white">Go somewhere</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                
+                </div>
+              </div>
+              
+            <hr>
+
+
+            
+        </div>
+          
+    </main>
+    <%- include("partials/footer.ejs") %>
+
+
