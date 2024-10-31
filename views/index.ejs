@@ -20,27 +20,27 @@
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                      <a href="#Fiction" class="nav-link active" aria-current="page">
+                      <a href="#Religious" class="nav-link active" aria-current="page">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                        Fiction
+                        Religious
                       </a>
                     </li>
                     <li>
-                      <a href="#Non-Fiction" class="nav-link text-white">
+                      <a href="#Psychology" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                         Psychology
                       </a>
                     </li>
                     <li>
-                      <a href="#Religious" class="nav-link text-white">
+                      <a href="#Fiction" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                        Religious
+                        Fiction
                       </a>
                     </li>
                     <li>
-                      <a href="#History" class="nav-link text-white">
+                      <a href="#Non-Fiction" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                        History
+                        Non-Fiction
                       </a>
                     </li>
                   </ul>
@@ -74,35 +74,36 @@
     
         <div class="container">
             <hr class="white">
-            <div class="" id="Fiction">
-                <h3 class="white">Fiction</h3>
-                <div class="row ">
-                    <% fictionBooks.forEach(book => { %>
-                        <div class="col-md-3 mb-4">
-                            <div class="card">
-                                <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
-                                  <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
-                                </a>
-                                  <div class="card-body">
-                                    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
-                                      <h5 class="card-title white"><%= book.title %></h5>
-                                    </a>
-                                    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
-                                      <p class="card-text white">Published: <%= book.first_publish_year %></p>
-                                      </a>
-                                      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
-                                        <p class="card-text white">Author: <%= book.authors_name %></p>
-                                    </a>
-                                  </div>
-                                
-                            </div>
-                        </div>
-                    <% }) %>
-                  </div>
+            <div class="" id="Religious">
+              <h3 class="white">Religious </h3>
+              <div class="row ">
+                <% religiousBooks.forEach(book => { %>
+                  <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
+                          <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
+                        </a>
+                          <div class="card-body">
+                            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                              <h5 class="card-title white"><%= book.title %></h5>
+                            </a>
+                            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                              <p class="card-text white">Published: <%= book.first_publish_year %></p>
+                              </a>
+                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                <p class="card-text white">Author: <%= book.authors_name %></p>
+                            </a>
+                          </div>
+                        
+                    </div>
+                </div>
+              <% }) %>
+                </div>
             </div>
             
+            
               <hr class="white">
-              <div class="" id="Non-Fiction">
+              <div class="" id="Psychology">
                 <h3 class="white">Psychology</h3>
                 <div class="row ">
                   <% psychologyBooks.forEach(book => { %>
@@ -130,35 +131,35 @@
                   </div>
               
               <hr class="white">
-              <div class="" id="Novel">
-                <h3 class="white">Religious </h3>
+              <div class="" id="Fiction">
+                <h3 class="white">Fiction</h3>
                 <div class="row ">
-                  <% religiousBooks.forEach(book => { %>
-                    <div class="col-md-3 mb-4">
-                      <div class="card">
-                          <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
-                            <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
-                          </a>
-                            <div class="card-body">
-                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
-                                <h5 class="card-title white"><%= book.title %></h5>
-                              </a>
-                              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
-                                <p class="card-text white">Published: <%= book.first_publish_year %></p>
+                    <% fictionBooks.forEach(book => { %>
+                        <div class="col-md-3 mb-4">
+                            <div class="card">
+                                <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
+                                  <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" class="card-img-top" alt="<%= book.title %> cover">
                                 </a>
-                                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
-                                  <p class="card-text white">Author: <%= book.authors_name %></p>
-                              </a>
+                                  <div class="card-body">
+                                    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                      <h5 class="card-title white"><%= book.title %></h5>
+                                    </a>
+                                    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                      <p class="card-text white">Published: <%= book.first_publish_year %></p>
+                                      </a>
+                                      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
+                                        <p class="card-text white">Author: <%= book.authors_name %></p>
+                                    </a>
+                                  </div>
+                                
                             </div>
-                          
-                      </div>
+                        </div>
+                    <% }) %>
                   </div>
-                <% }) %>
-                  </div>
-              </div>
+            </div>
               
               <hr class="white">
-              <div class="" id="Self-Help">
+              <div class="" id="Non-Fiction">
                 <h3 class="white">Non-Fiction</h3>
                 <div class="row ">
                   <% historyBooks.forEach(book => { %>
