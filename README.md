@@ -1,6 +1,6 @@
 # Capstone Project 4: Book Explorer
 
-In this project, users can explore books of various genres, search by title, and view book details using the Open Library API.
+In this project, users can explore books of various genres, search by title, and view book details using the  [Open Library API](https://openlibrary.org/developers/api).
 
 ## Overview
 
