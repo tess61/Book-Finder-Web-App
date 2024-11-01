@@ -19,10 +19,8 @@ Additionally, the application allows users to search for books by title, display
 - [Usage](#usage)
 - [Project Features](#project-features)
 - [Technologies Used](#technologies-used)
-- [API Reference](#api-reference)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [API Reference](#api-reference)
 
 ## Installation
 
@@ -58,7 +56,16 @@ Once the server is running, navigate to `http://localhost:3000` in your web brow
 - **Node.js**: JavaScript runtime environment.
 - **Axios**: HTTP client used to make API requests.
 - **Open Library API**: Public API for accessing book data.
+## Project Structure
 
+```plaintext
+Capstone_project_4/
+├── app.js              # Main application file
+├── package.json        # Project metadata and dependencies
+├── public/             # Static files (CSS, images)
+├── views/              # EJS templates for rendering pages
+└── routes/             # Express routes
+```
 ## API Reference
 
 The project uses the [Open Library API](https://openlibrary.org/developers/api) to fetch book information.
