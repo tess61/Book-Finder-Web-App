@@ -60,11 +60,18 @@ Once the server is running, navigate to `http://localhost:3000` in your web brow
 
 ```plaintext
 Capstone_project_4/
-├── app.js              # Main application file
-├── package.json        # Project metadata and dependencies
-├── public/             # Static files (CSS, images)
-├── views/              # EJS templates for rendering pages
-└── routes/             # Express routes
+├── app.js                 # Main application file
+├── package.json           # Project metadata and dependencies
+├── public/
+   |__css/
+   |__images/               # Static files (CSS, images)
+├── views/
+   |__partials/
+      |__footer.ejs
+      |__header.ejs         # EJS templates for rendering pages
+   |__index.ejs
+   |__searched.ejs        
+└── routes/                 # Express routes
 ```
 ## API Reference
 
