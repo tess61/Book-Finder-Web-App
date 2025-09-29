@@ -2,10 +2,16 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from 'url';
 import axios from "axios";
+import dotenv from "dotenv";
+import helmet from "helmet";
+import morgan from "morgan";
+import compression from "compression";
+import rateLimit from "express-rate-limit";
 
 
+dotenv.config();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 let rand
@@ -15,6 +21,17 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
+// Security, logging, and performance middleware
+app.use(helmet());
+app.use(morgan('dev'));
+app.use(compression());
+app.use(rateLimit({ windowMs: 60 * 1000, max: 120 }));
+
+// Create a configured axios instance
+const http = axios.create({
+  timeout: 10000
+});
+
 
 app.get('/search', async (req, res) => {
     const query = req.query.q;
@@ -23,7 +40,7 @@ app.get('/search', async (req, res) => {
     }
 
     try {
-      const response = await axios.get(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`);  
+      const response = await http.get(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`);  
       const searchedBook = response.data.docs.slice(0,1).map(book => ({
         cover_id: book.cover_i,
         title: book.title,
@@ -51,7 +68,7 @@ app.get('/search', async (req, res) => {
 app.get('/', async (req, res) => {
     try {
         const fictionGenre = `https://openlibrary.org/subjects/fiction.json?ebooks=true`;
-        const fictionResponse = await axios.get(fictionGenre);
+        const fictionResponse = await http.get(fictionGenre);
         rand = Math.floor(Math.random() * (fictionResponse.data.works.length - 4));
         const fictionBooks = fictionResponse.data.works.slice(rand, rand + 4).map(book => ({
           cover_id: book.cover_id,
@@ -62,7 +79,7 @@ app.get('/', async (req, res) => {
         }));
         
         const psychologyGenre = `https://openlibrary.org/subjects/psychology.json?ebooks=true`;
-        const psychologyResponse = await axios.get(psychologyGenre);
+        const psychologyResponse = await http.get(psychologyGenre);
         rand = Math.floor(Math.random() * (psychologyResponse.data.works.length - 4));
         const psychologyBooks = psychologyResponse.data.works.slice(rand, rand + 4).map(book => ({
           cover_id: book.cover_id,
@@ -72,7 +89,7 @@ app.get('/', async (req, res) => {
           
         }));
         const historyGenre = `https://openlibrary.org/subjects/Nonfiction.json?ebooks=true`;
-        const historyResponse = await axios.get(historyGenre);
+        const historyResponse = await http.get(historyGenre);
         rand = Math.floor(Math.random() * (historyResponse.data.works.length - 4));
         const historyBooks = historyResponse.data.works.slice(rand, rand + 4).map(book => ({
           cover_id: book.cover_id,
@@ -82,7 +99,7 @@ app.get('/', async (req, res) => {
           
         }));
         const religiousGenre = `https://openlibrary.org/subjects/religious.json?ebooks=true`;
-        const religiousResponse = await axios.get(religiousGenre);
+        const religiousResponse = await http.get(religiousGenre);
         rand = Math.floor(Math.random() * (religiousResponse.data.works.length - 4));
         const religiousBooks = religiousResponse.data.works.slice(rand, rand + 4).map(book => ({
           cover_id: book.cover_id,
@@ -107,7 +124,7 @@ app.get ('/book/:title', async (req, res) => {
   try {
     
     const title = req.params.title;
-    const response = await axios.get(`https://openlibrary.org/search.json?q=${title}`);
+    const response = await http.get(`https://openlibrary.org/search.json?q=${encodeURIComponent(title)}`);
     const searchedBook = response.data.docs.slice(0,1).map(book => ({
     
       cover_id: book.cover_i,
@@ -133,6 +150,28 @@ app.get ('/book/:title', async (req, res) => {
 });
 
  
+// 404 handler
+app.use((req, res) => {
+  res.status(404);
+  try {
+    res.render('404');
+  } catch (_) {
+    res.send('404 Not Found');
+  }
+});
+
+// Centralized error handler
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500);
+  try {
+    res.render('error', { message: 'An unexpected error occurred.' });
+  } catch (_) {
+    res.send('An unexpected error occurred.');
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

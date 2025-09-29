@@ -26,19 +26,28 @@ Additionally, the application allows users to search for books by title, display
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/Capstone_project_4.git
+   git clone https://github.com/tess61/Book-Finder-Web-App.git
 2. **Navigate to the Project Directory:**:
    ```bash
-   cd Capstone_project_4
+   cd Book-Finder-Web-App
 3. **Install Dependencies:**:
    ```bash
    npm install
-4. **Run the Application:**:
+4. **Copy env file and configure:**
    ```bash
-   node app.js
+   cp .env.example .env
+   # edit .env if you want to change PORT
+   ```
+5. **Run the Application:**
+   ```bash
+   npm run start
+   ```
+   or, for development with auto-reload:
+   ```bash
+   npm run dev
 ## Usage
 
-Once the server is running, navigate to `http://localhost:3000` in your web browser. From here, you can:
+Once the server is running, navigate to `http://localhost:3000` (or your configured `PORT`) in your web browser. From here, you can:
 
 - Browse books by the four primary genres.
 - Use the search function to find specific books by title.
@@ -71,7 +80,7 @@ Capstone_project_4/
       |__header.ejs         # EJS templates for rendering pages
    |__index.ejs
    |__searched.ejs        
-└── routes/                 # Express routes
+└── views/404.ejs, views/error.ejs  # Error pages
 ```
 ## API Reference
 
