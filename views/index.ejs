@@ -79,10 +79,19 @@
               <div class="row ">
                 <% religiousBooks.forEach(book => { %>
                   <div class="col-md-3 mb-4">
-                    <div class="card">
+                    <div class="card position-relative">
                         <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
                           <img src="<%= book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : '/images/book-1.png' %>" class="card-img-top" alt="<%= book.title %> cover">
                         </a>
+                          <button
+                            class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 favorite-btn"
+                            data-title="<%= book.title %>"
+                            data-author="<%= book.authors_name %>"
+                            data-cover-id="<%= book.cover_id %>"
+                            aria-label="Add to favorites"
+                          >
+                            <svg class="favorite-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                          </button>
                           <div class="card-body">
                             <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                               <h5 class="card-title white"><%= book.title %></h5>
@@ -108,10 +117,19 @@
                 <div class="row ">
                   <% psychologyBooks.forEach(book => { %>
                     <div class="col-md-3 mb-4">
-                      <div class="card">
+                      <div class="card position-relative">
                           <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
                             <img src="<%= book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : '/images/book-1.png' %>" class="card-img-top" alt="<%= book.title %> cover">
                           </a>
+                            <button
+                              class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 favorite-btn"
+                              data-title="<%= book.title %>"
+                              data-author="<%= book.authors_name %>"
+                              data-cover-id="<%= book.cover_id %>"
+                              aria-label="Add to favorites"
+                            >
+                              <svg class="favorite-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                            </button>
                             <div class="card-body">
                               <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <h5 class="card-title white"><%= book.title %></h5>
@@ -136,10 +154,19 @@
                 <div class="row ">
                     <% fictionBooks.forEach(book => { %>
                         <div class="col-md-3 mb-4">
-                            <div class="card">
+                            <div class="card position-relative">
                                 <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
                                   <img src="<%= book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : '/images/book-1.png' %>" class="card-img-top" alt="<%= book.title %> cover">
                                 </a>
+                                  <button
+                                    class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 favorite-btn"
+                                    data-title="<%= book.title %>"
+                                    data-author="<%= book.authors_name %>"
+                                    data-cover-id="<%= book.cover_id %>"
+                                    aria-label="Add to favorites"
+                                  >
+                                    <svg class="favorite-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                                  </button>
                                   <div class="card-body">
                                     <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                       <h5 class="card-title white"><%= book.title %></h5>
@@ -164,10 +191,19 @@
                 <div class="row ">
                   <% historyBooks.forEach(book => { %>
                     <div class="col-md-3 mb-4">
-                      <div class="card">
+                      <div class="card position-relative">
                           <a class="link-underline-opacity-0" href="/book/<%= encodeURIComponent(book.title) %>">
                             <img src="<%= book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : '/images/book-1.png' %>" class="card-img-top" alt="<%= book.title %> cover">
                           </a>
+                            <button
+                              class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 favorite-btn"
+                              data-title="<%= book.title %>"
+                              data-author="<%= book.authors_name %>"
+                              data-cover-id="<%= book.cover_id %>"
+                              aria-label="Add to favorites"
+                            >
+                              <svg class="favorite-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                            </button>
                             <div class="card-body">
                               <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/book/<%= encodeURIComponent(book.title) %>">
                                 <h5 class="card-title white"><%= book.title %></h5>

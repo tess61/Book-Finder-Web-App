@@ -29,6 +29,10 @@ class BookService {
         return Promise.reject(error);
       }
     );
+
+    // Simple in-memory cache with TTL for suggestions
+    this.suggestCache = new Map(); // key -> { data, expiresAt }
+    this.suggestTtlMs = 60 * 1000; // 60s
   }
 
   /**
@@ -113,6 +117,37 @@ class BookService {
     );
 
     return results;
+  }
+
+  /**
+   * Get title suggestions for typeahead
+   * @param {string} query
+   * @param {number} limit
+   * @returns {Promise<Array<{title:string, author:string, cover_id?:number}>>}
+   */
+  async getSuggestions(query, limit = 6) {
+    const q = (query || '').trim();
+    if (q.length < 2) return [];
+
+    const cacheKey = `${q.toLowerCase()}::${limit}`;
+    const cached = this.suggestCache.get(cacheKey);
+    const now = Date.now();
+    if (cached && cached.expiresAt > now) {
+      return cached.data;
+    }
+
+    const response = await this.client.get('/search.json', {
+      params: { q, limit },
+    });
+    const docs = Array.isArray(response.data?.docs) ? response.data.docs : [];
+    const suggestions = docs.slice(0, limit).map((d) => ({
+      title: d.title,
+      author: Array.isArray(d.author_name) ? d.author_name[0] : d.author_name || 'Unknown Author',
+      cover_id: d.cover_i,
+    }));
+
+    this.suggestCache.set(cacheKey, { data: suggestions, expiresAt: now + this.suggestTtlMs });
+    return suggestions;
   }
 }
 

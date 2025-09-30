@@ -237,6 +237,67 @@ svg.white path {
   transform: scale(1.02);
 }
 
+/* Favorite button */
+.favorite-btn {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 50% !important;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.favorite-btn .favorite-icon {
+  stroke: var(--text-primary);
+}
+
+.favorite-btn.active {
+  background: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+.favorite-btn.active .favorite-icon {
+  stroke: white;
+}
+
+/* Suggestions dropdown */
+.suggest-dropdown {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+}
+
+.suggest-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.suggest-item:last-child {
+  border-bottom: none;
+}
+
+.suggest-item:hover {
+  background: var(--bg-secondary);
+}
+
+.suggest-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.suggest-sub {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
 /* Navigation Pills */
 [data-theme='light'] .nav-pills .nav-link {
   border-radius: 20px;
