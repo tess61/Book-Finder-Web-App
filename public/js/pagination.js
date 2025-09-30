@@ -1,5 +1,6 @@
 /** Client-side Load More for subject sections */
 const SUBJECT_LIMIT = 8;
+const subjectCache = new Map(); // key: `${subject}:${offset}` -> Array items
 
 function createBookCard(b) {
   const cover = b.cover_id
@@ -27,19 +28,42 @@ async function loadMoreForSection(sectionId, subject) {
   const btn = document.querySelector(`#${sectionId} .load-more-btn`);
   const loaded = parseInt(btn.getAttribute('data-loaded') || '0', 10);
 
-  const res = await fetch(
-    `/api/subject/${encodeURIComponent(subject)}?offset=${loaded}&limit=${SUBJECT_LIMIT}`
-  );
-  if (!res.ok) return;
-  const data = await res.json();
-  const html = (data.items || []).map(createBookCard).join('');
+  const key = `${subject}:${loaded}`;
+  const originalHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML =
+    '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Loading...';
+
+  let items = subjectCache.get(key);
+  let total = null;
+  if (!items) {
+    const res = await fetch(
+      `/api/subject/${encodeURIComponent(subject)}?offset=${loaded}&limit=${SUBJECT_LIMIT}`
+    );
+    if (!res.ok) {
+      btn.disabled = false;
+      btn.innerHTML = originalHtml;
+      return;
+    }
+    const data = await res.json();
+    items = data.items || [];
+    total = data.total || 0;
+    subjectCache.set(key, items);
+    if (total) btn.setAttribute('data-total', String(total));
+  }
+
+  const html = items.map(createBookCard).join('');
   container.insertAdjacentHTML('beforeend', html);
 
-  const nextLoaded = loaded + (data.items || []).length;
+  const nextLoaded = loaded + items.length;
   btn.setAttribute('data-loaded', nextLoaded.toString());
-  if (nextLoaded >= (data.total || 0)) {
+  const totalCount = parseInt(btn.getAttribute('data-total') || '0', 10);
+  if (totalCount && nextLoaded >= totalCount) {
     btn.style.display = 'none';
   }
+
+  btn.disabled = false;
+  btn.innerHTML = originalHtml;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
