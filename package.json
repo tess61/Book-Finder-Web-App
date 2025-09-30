@@ -7,7 +7,10 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon --watch . app.js",
-    "lint": "echo 'No linter configured'",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "echo \"No tests configured\" && exit 0"
   },
   "keywords": [
@@ -29,6 +32,9 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
     "nodemon": "^3.1.7"
   }
 }
