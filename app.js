@@ -32,6 +32,12 @@ app.use(morgan('dev'));
 app.use(compression());
 app.use(rateLimit(rateLimitConfig));
 
+// Expose current path to views for active nav highlighting
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
+
 // Routes
 app.use('/', bookRoutes);
 
