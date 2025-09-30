@@ -33,6 +33,12 @@ class BookService {
     // Simple in-memory cache with TTL for suggestions
     this.suggestCache = new Map(); // key -> { data, expiresAt }
     this.suggestTtlMs = 60 * 1000; // 60s
+
+    // Subject and search caches
+    this.subjectCache = new Map(); // key `subject` -> { data, expiresAt }
+    this.subjectTtlMs = 5 * 60 * 1000; // 5 minutes
+    this.searchCache = new Map(); // key `q` -> { data, expiresAt }
+    this.searchTtlMs = 2 * 60 * 1000; // 2 minutes
   }
 
   /**
@@ -41,10 +47,16 @@ class BookService {
    * @returns {Promise<Object>} Book data
    */
   async searchBooks(query) {
-    const response = await this.client.get('/search.json', {
-      params: { q: query },
-    });
-    return response.data;
+    const q = (query || '').trim();
+    const key = q.toLowerCase();
+    const now = Date.now();
+    const cached = this.searchCache.get(key);
+    if (cached && cached.expiresAt > now) return cached.data;
+
+    const response = await this.client.get('/search.json', { params: { q } });
+    const data = response.data;
+    this.searchCache.set(key, { data, expiresAt: now + this.searchTtlMs });
+    return data;
   }
 
   /**
@@ -54,10 +66,17 @@ class BookService {
    * @returns {Promise<Object>} Books in that subject
    */
   async getBooksBySubject(subject, ebooksOnly = true) {
+    const key = `${subject}:${ebooksOnly ? '1' : '0'}`.toLowerCase();
+    const now = Date.now();
+    const cached = this.subjectCache.get(key);
+    if (cached && cached.expiresAt > now) return cached.data;
+
     const response = await this.client.get(`/subjects/${subject}.json`, {
       params: { ebooks: ebooksOnly },
     });
-    return response.data;
+    const data = response.data;
+    this.subjectCache.set(key, { data, expiresAt: now + this.subjectTtlMs });
+    return data;
   }
 
   /**
