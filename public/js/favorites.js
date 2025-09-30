@@ -11,6 +11,7 @@ function readFavorites() {
 
 function writeFavorites(favs) {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+  updateFavoritesCount();
 }
 
 function bookIdFromData({ title, author }) {
@@ -91,4 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // If on favorites page, render
   renderFavoritesList();
+
+  // Update header count on load
+  updateFavoritesCount();
 });
+
+function updateFavoritesCount() {
+  const countEl = document.getElementById('favoritesCount');
+  if (!countEl) return;
+  const favs = readFavorites();
+  countEl.textContent = favs.length;
+}

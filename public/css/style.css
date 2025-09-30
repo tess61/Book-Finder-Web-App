@@ -369,6 +369,12 @@ svg.white path {
   color: antiquewhite;
 }
 
+/* Favorites count badge */
+.fav-count {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
+
 /* Search Form Inline Layout */
 .search-form {
   position: relative;
