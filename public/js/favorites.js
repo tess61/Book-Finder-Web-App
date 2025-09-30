@@ -63,11 +63,22 @@ function renderFavoritesList(containerId = 'favoritesContainer') {
               <h5 class="card-title white">${b.title}</h5>
             </a>
             <p class="card-text white">Author: ${b.author}</p>
+            <button class="btn btn-outline-danger btn-sm remove-fav" data-id="${b.id}">Remove</button>
           </div>
         </div>
       </div>`;
     })
     .join('');
+
+  // Bind remove buttons
+  container.querySelectorAll('.remove-fav').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-id');
+      const next = readFavorites().filter((b) => b.id !== id);
+      writeFavorites(next);
+      renderFavoritesList(containerId);
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
