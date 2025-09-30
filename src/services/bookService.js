@@ -149,6 +149,22 @@ class BookService {
     this.suggestCache.set(cacheKey, { data: suggestions, expiresAt: now + this.suggestTtlMs });
     return suggestions;
   }
+
+  /**
+   * Paginated slice of a subject's works
+   * @param {string} subject
+   * @param {number} offset
+   * @param {number} limit
+   * @returns {Promise<{items:Array, total:number}>}
+   */
+  async getSubjectPage(subject, offset = 0, limit = 8) {
+    const data = await this.getBooksBySubject(subject);
+    const total = Array.isArray(data.works) ? data.works.length : 0;
+    const items = (data.works || [])
+      .slice(offset, offset + limit)
+      .map((book) => this.transformSubjectResult(book));
+    return { items, total };
+  }
 }
 
 export default new BookService();

@@ -33,4 +33,17 @@ router.get('/api/suggest', async (req, res, next) => {
   }
 });
 
+// API: Paginated subject fetch (for Load More)
+router.get('/api/subject/:name', async (req, res, next) => {
+  try {
+    const name = req.params.name;
+    const offset = parseInt(req.query.offset || '0', 10);
+    const limit = parseInt(req.query.limit || '8', 10);
+    const page = await bookService.getSubjectPage(name, offset, limit);
+    res.json(page);
+  } catch (err) {
+    next(err);
+  }
+});
+
 export default router;
