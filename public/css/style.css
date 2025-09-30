@@ -252,3 +252,44 @@ svg.white path {
 [data-theme='light'] .border-bottom {
   border-bottom: 2px solid var(--nav-border) !important;
 }
+
+/* Genre Navigation Pills - Light Theme */
+[data-theme='light'] .nav-pills .nav-link.white {
+  color: var(--text-secondary);
+  background-color: transparent;
+}
+
+[data-theme='light'] .nav-pills .nav-link.white:hover {
+  color: var(--accent-primary);
+  background-color: var(--bg-secondary);
+}
+
+[data-theme='light'] .nav-pills .nav-link.white[aria-current='page'] {
+  color: var(--accent-primary);
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Dark Theme - Keep Original Style */
+[data-theme='dark'] .nav-pills .nav-link.white {
+  color: antiquewhite;
+}
+
+[data-theme='dark'] .nav-pills .nav-link.white:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Top Navigation - Light Theme */
+[data-theme='light'] .nav .nav-link.white {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+[data-theme='light'] .nav .nav-link.white:hover {
+  color: var(--accent-primary);
+}
+
+/* Dark Theme - Top Navigation */
+[data-theme='dark'] .nav .nav-link.white {
+  color: antiquewhite;
+}
