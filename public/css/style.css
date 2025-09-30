@@ -255,27 +255,41 @@ svg.white path {
 
 /* Genre Navigation Pills - Light Theme */
 [data-theme='light'] .nav-pills .nav-link.white {
-  color: var(--text-secondary);
-  background-color: transparent;
+  color: var(--text-secondary) !important;
+  background-color: transparent !important;
+  border: 1px solid var(--border-color);
+  --bs-bg-opacity: 0;
 }
 
 [data-theme='light'] .nav-pills .nav-link.white:hover {
-  color: var(--accent-primary);
-  background-color: var(--bg-secondary);
+  color: var(--accent-primary) !important;
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--accent-primary);
+  --bs-bg-opacity: 1;
 }
 
 [data-theme='light'] .nav-pills .nav-link.white[aria-current='page'] {
-  color: var(--accent-primary);
-  background-color: rgba(52, 152, 219, 0.1);
+  color: var(--accent-primary) !important;
+  background-color: rgba(52, 152, 219, 0.1) !important;
+  border-color: var(--accent-primary);
+  --bs-bg-opacity: 1;
 }
 
 /* Dark Theme - Keep Original Style */
 [data-theme='dark'] .nav-pills .nav-link.white {
-  color: antiquewhite;
+  color: antiquewhite !important;
+  background-color: transparent !important;
+  border: 1px solid transparent;
 }
 
 [data-theme='dark'] .nav-pills .nav-link.white:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='dark'] .nav-pills .nav-link.white[aria-current='page'] {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Top Navigation - Light Theme */
