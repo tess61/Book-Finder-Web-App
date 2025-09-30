@@ -9,6 +9,26 @@ class BookService {
       baseURL: 'https://openlibrary.org',
       timeout: 10000,
     });
+
+    // Response interceptor with simple retry for transient errors (e.g., 503)
+    this.client.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        const config = error.config || {};
+        const status = error.response?.status;
+        const isTransient = status === 503 || status === 502 || status === 429 || status === 504;
+        const maxRetries = 2;
+        if (!config.__retryCount) config.__retryCount = 0;
+
+        if (isTransient && config.__retryCount < maxRetries) {
+          config.__retryCount += 1;
+          const backoffMs = 300 * Math.pow(2, config.__retryCount - 1); // 300ms, 600ms
+          await new Promise((r) => setTimeout(r, backoffMs));
+          return this.client(config);
+        }
+        return Promise.reject(error);
+      }
+    );
   }
 
   /**
